@@ -1,4 +1,4 @@
-# Filter Valid password
+# Filter Valid Password
 Given a text file of passwords, this library creates another text file containing only **invalid** passwords.
 
 ## What is an invalid password?
