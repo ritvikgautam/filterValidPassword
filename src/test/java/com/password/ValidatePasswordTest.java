@@ -12,17 +12,21 @@ public class ValidatePasswordTest {
     public void testLatinAlphabet() throws Exception {
         ValidatePassword inputPassword = new ValidatePassword();
 
-        Boolean returnValue = inputPassword.isLatinAlphabet("thisispassword");
+        inputPassword.setPassword("thisispassword");
+        Boolean returnValue = inputPassword.isLatinAlphabet();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.isLatinAlphabet("123");
+        inputPassword.setPassword("123");
+        returnValue = inputPassword.isLatinAlphabet();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
         // TODO: this should not return false
-        returnValue = inputPassword.isLatinAlphabet("");
+        inputPassword.setPassword("");
+        returnValue = inputPassword.isLatinAlphabet();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.isLatinAlphabet("ď");
+        inputPassword.setPassword("ď");
+        returnValue = inputPassword.isLatinAlphabet();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
     }
 
@@ -30,16 +34,20 @@ public class ValidatePasswordTest {
     public void testLowerCase() throws Exception {
         ValidatePassword inputPassword = new ValidatePassword();
 
-        Boolean returnValue = inputPassword.isLowerCase("thisispassword");
+        inputPassword.setPassword("thisispassword");
+        Boolean returnValue = inputPassword.isLowerCase();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.isLowerCase("");
+        inputPassword.setPassword("");
+        returnValue = inputPassword.isLowerCase();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.isLowerCase("thisIsPassword");
+        inputPassword.setPassword("thisIsPassword");
+        returnValue = inputPassword.isLowerCase();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.isLowerCase("THISISPASSWORD");
+        inputPassword.setPassword("THISISPASSWORD");
+        returnValue = inputPassword.isLowerCase();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
     }
 
@@ -47,16 +55,20 @@ public class ValidatePasswordTest {
     public void testValidLength() throws Exception {
         ValidatePassword inputPassword = new ValidatePassword();
 
-        Boolean returnValue = inputPassword.isValidLength("thisispassword");
+        inputPassword.setPassword("thisispassword");
+        Boolean returnValue = inputPassword.isValidLength();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.isValidLength("");
+        inputPassword.setPassword("");
+        returnValue = inputPassword.isValidLength();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.isValidLength("thisisareallylongpasswordthatislowercasebutisprobablyverylong");
+        inputPassword.setPassword("thisisareallylongpasswordthatislowercasebutisprobablyverylong");
+        returnValue = inputPassword.isValidLength();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.isValidLength("!@#$%^^");
+        inputPassword.setPassword("!@#$%^^");
+        returnValue = inputPassword.isValidLength();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
     }
 
@@ -64,34 +76,44 @@ public class ValidatePasswordTest {
     public void testTwoConsecutiveLetters() throws Exception {
         ValidatePassword inputPassword = new ValidatePassword();
 
-        Boolean returnValue = inputPassword.twoConsecutiveLetters("aa");
+        inputPassword.setPassword("aa");
+        Boolean returnValue = inputPassword.twoConsecutiveLetters();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.twoConsecutiveLetters("bb");
+        inputPassword.setPassword("bb");
+        returnValue = inputPassword.twoConsecutiveLetters();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.twoConsecutiveLetters("ee");
+        inputPassword.setPassword("ee");
+        returnValue = inputPassword.twoConsecutiveLetters();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveLetters("oo");
+        inputPassword.setPassword("oo");
+        returnValue = inputPassword.twoConsecutiveLetters();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveLetters("12");
+        inputPassword.setPassword("12");
+        returnValue = inputPassword.twoConsecutiveLetters();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveLetters("a1a");
+        inputPassword.setPassword("a1a");
+        returnValue = inputPassword.twoConsecutiveLetters();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveLetters("a!a");
+        inputPassword.setPassword("a!a");
+        returnValue = inputPassword.twoConsecutiveLetters();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveLetters(" ");
+        inputPassword.setPassword(" ");
+        returnValue = inputPassword.twoConsecutiveLetters();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveLetters("!@#$%");
+        inputPassword.setPassword("!@#$%");
+        returnValue = inputPassword.twoConsecutiveLetters();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveLetters("");
+        inputPassword.setPassword("");
+        returnValue = inputPassword.twoConsecutiveLetters();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
     }
 
@@ -99,34 +121,44 @@ public class ValidatePasswordTest {
     public void testTwoConsecutiveConsonants() throws Exception {
         ValidatePassword inputPassword = new ValidatePassword();
 
-        Boolean returnValue = inputPassword.twoConsecutiveConsonant("aa");
+        inputPassword.setPassword("aa");
+        Boolean returnValue = inputPassword.twoConsecutiveConsonant();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveConsonant("abyoy");
+        inputPassword.setPassword("abyoy");
+        returnValue = inputPassword.twoConsecutiveConsonant();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.twoConsecutiveConsonant("boyaff");
+        inputPassword.setPassword("boyaff");
+        returnValue = inputPassword.twoConsecutiveConsonant();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.twoConsecutiveConsonant("by");
+        inputPassword.setPassword("by");
+        returnValue = inputPassword.twoConsecutiveConsonant();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.twoConsecutiveConsonant("byoa");
+        inputPassword.setPassword("byoa");
+        returnValue = inputPassword.twoConsecutiveConsonant();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.twoConsecutiveConsonant("a!klf");
+        inputPassword.setPassword("a!klf");
+        returnValue = inputPassword.twoConsecutiveConsonant();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.twoConsecutiveConsonant("!op@a");
+        inputPassword.setPassword("!op@a");
+        returnValue = inputPassword.twoConsecutiveConsonant();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.twoConsecutiveConsonant(" ");
+        inputPassword.setPassword(" ");
+        returnValue = inputPassword.twoConsecutiveConsonant();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveConsonant("!@#$%");
+        inputPassword.setPassword("!@#$%");
+        returnValue = inputPassword.twoConsecutiveConsonant();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveConsonant("");
+        inputPassword.setPassword("");
+        returnValue = inputPassword.twoConsecutiveConsonant();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
     }
 
@@ -134,34 +166,44 @@ public class ValidatePasswordTest {
     public void testTwoConsecutiveVowels() throws Exception {
         ValidatePassword inputPassword = new ValidatePassword();
 
-        Boolean returnValue = inputPassword.twoConsecutiveVowel("aa");
+        inputPassword.setPassword("aa");
+        Boolean returnValue = inputPassword.twoConsecutiveVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.twoConsecutiveVowel("aboy");
+        inputPassword.setPassword("aboy");
+        returnValue = inputPassword.twoConsecutiveVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveVowel("boya");
+        inputPassword.setPassword("boya");
+        returnValue = inputPassword.twoConsecutiveVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveVowel("by");
+        inputPassword.setPassword("by");
+        returnValue = inputPassword.twoConsecutiveVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveVowel("byoa");
+        inputPassword.setPassword("byoa");
+        returnValue = inputPassword.twoConsecutiveVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.twoConsecutiveVowel("a!eaf");
+        inputPassword.setPassword("a!eaf");
+        returnValue = inputPassword.twoConsecutiveVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.twoConsecutiveVowel("!ae@a");
+        inputPassword.setPassword("!ae@a");
+        returnValue = inputPassword.twoConsecutiveVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.twoConsecutiveVowel(" ");
+        inputPassword.setPassword(" ");
+        returnValue = inputPassword.twoConsecutiveVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveVowel("!@#$%");
+        inputPassword.setPassword("!@#$%");
+        returnValue = inputPassword.twoConsecutiveVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.twoConsecutiveVowel("");
+        inputPassword.setPassword("");
+        returnValue = inputPassword.twoConsecutiveVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
     }
 
@@ -169,25 +211,32 @@ public class ValidatePasswordTest {
     public void testContainVowel() throws Exception {
         ValidatePassword inputPassword = new ValidatePassword();
 
-        Boolean returnValue = inputPassword.containVowel("a");
+        inputPassword.setPassword("a");
+        Boolean returnValue = inputPassword.containVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.containVowel("aboy");
+        inputPassword.setPassword("aboy");
+        returnValue = inputPassword.containVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.containVowel("boya");
+        inputPassword.setPassword("boya");
+        returnValue = inputPassword.containVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(true));
 
-        returnValue = inputPassword.containVowel("by");
+        inputPassword.setPassword("by");
+        returnValue = inputPassword.containVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.containVowel(" ");
+        inputPassword.setPassword(" ");
+        returnValue = inputPassword.containVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.containVowel("!@#$%");
+        inputPassword.setPassword("!@#$%");
+        returnValue = inputPassword.containVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
 
-        returnValue = inputPassword.containVowel("");
+        inputPassword.setPassword("");
+        returnValue = inputPassword.containVowel();
         Assert.assertThat(returnValue, CoreMatchers.is(false));
     }
 
@@ -195,7 +244,8 @@ public class ValidatePasswordTest {
     public void testValidPassword() throws Exception {
         ValidatePassword inputPassword = new ValidatePassword();
 
-        Boolean returnValue = inputPassword.isValidPassword("thisIsPassword");
+        inputPassword.setPassword("a");
+        Boolean returnValue = inputPassword.isValidPassword();
 
         Assert.assertThat(returnValue, CoreMatchers.is(true));
     }
