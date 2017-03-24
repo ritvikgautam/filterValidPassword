@@ -11,6 +11,18 @@ An invalid password does **not** satisfy any of the following criteria.
  
 The vowels are {a, e, i, o, u}. All other letters are considered consonants. 
 
+## Execution
+
+Compile and Run Tests: `mvn clean package`
+
+Execute main program: `mvn exec:java -Dexec.mainClass="com.password.invalidTextFilePassword"`
+
+Main Class Path: `src/main/java/com.password/invalidTextFilePassword.java`
+
+Library Path: `src/main/java/com.password/ValidatePassword.java`
+
+Test File Path: `src/test/java/com.password/ValidatePasswordTest.java`
+
 ## Examples
 The output file will contain the violated rule next to each invalid password. 
 

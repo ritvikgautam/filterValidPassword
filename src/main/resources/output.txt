@@ -1,0 +1,5 @@
+bontres, consecutive occurrence of the same letter
+ptoui, consecutive occurrence of the same letter
+tv, no vowel
+wiing, more than two consecutive vowels or consonants
+zoggax, more than two consecutive vowels or consonants
